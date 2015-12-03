@@ -5,12 +5,13 @@ import org.openqa.selenium.WebDriver;
 
 public class MyAccountPage extends AbstractPage{
     static String url = "http://automationpractice.com/index.php?controller=my-account";
-    By OrderHistoryAndDetailsButton = By.cssSelector("a[title=\"Orders\"]");
-    By MyCreditSlipsButton = By.cssSelector("");
-    By MyAddressesButton = By.cssSelector("");
-    By MyPersonalInformationButton = By.cssSelector("");
-    By MyWishListsButton = By.cssSelector("");
-    By HomeButton = By.cssSelector("");
+    By OrderHistoryAndDetailsButton = By.cssSelector("a[title='Orders']");
+    By MyCreditSlipsButton = By.cssSelector("a[title='Credit slips']");
+    By MyAddressesButton = By.cssSelector("a[title='Addresses']");
+    By MyPersonalInformationButton = By.cssSelector("a[title='Information']");
+    By MyWishListsButton = By.cssSelector("a[title='My wishlists']");
+    By HomeButton = By.xpath("//div[@id='center_column']/ul/li/a/span");
+    By HomeIcon = By.cssSelector("a.home");
     
 	public MyAccountPage(WebDriver driver){
 		super(driver);
@@ -41,8 +42,14 @@ public class MyAccountPage extends AbstractPage{
 		return new MyWishlistPage(driver);
 	}
 	
-	//click on Home button below
+	public HomePage clickOnHome(){
+		driver.findElement(HomeButton).click();
+		return new HomePage(driver);
+	}
 	
-	//click on Home icon above
+	public HomePage clickOnHomeIcon(){
+		driver.findElement(HomeIcon).click();
+		return new HomePage(driver);
+	}
     
 }
